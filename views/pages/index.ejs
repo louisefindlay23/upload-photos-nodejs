@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/main.css" />
+        <meta name="author" content="Louise Findlay" />
+        <title>Photo-Upload Web App</title>
+    </head>
+
+    <body>
+        <header>
+            <h1><a href="/">Photo-Upload Web App</a></h1>
+        </header>
+        <main>
+            <% if (photos.length > 0) { %>
+            <h2>Photos</h2>
+            <% photos.forEach(function(photo) { %>
+            <img src="/<%= photo.path %>" alt="<%= photo.originalname %>" />
+            <% }); %> <% } %>
+            <form
+                id="photo-form"
+                action="/upload-photo"
+                method="post"
+                enctype="multipart/form-data"
+            >
+                <label id="upload-photo-label" for="upload-photo"
+                    >Upload a Photo</label
+                >
+                <input
+                    id="upload-photo"
+                    type="file"
+                    accept="image/*"
+                    name="photo"
+                />
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+
+        <footer>
+            <p>© 2022 Photo-Upload Web App</p>
+        </footer>
+        <script async src="js/main.js"></script>
+    </body>
+</html>
