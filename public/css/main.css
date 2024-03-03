@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5% 0;
+}
+
+main {
+  margin: 2.5% 20%;
+}
+
+h2,
+form {
+  text-align: center;
+  margin: 5% 0;
+}
+
+p {
+  margin: 2.5% 0;
+}
+
+footer {
+  padding-bottom: 1%;
+}
+
+footer p {
+  font-weight: 400;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-auto-flow: dense;
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}

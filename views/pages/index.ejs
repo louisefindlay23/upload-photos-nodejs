@@ -3,21 +3,55 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/plain-css@1.0.7/dist/plain.min.css"
+    />
     <link rel="stylesheet" href="/css/main.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/img/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/img/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/img/favicons/favicon-16x16.png"
+    />
+    <link rel="shortcut icon" href="/img/favicons/favicon.ico" />
     <meta name="author" content="Louise Findlay" />
-    <title>Photo Uploading Web App</title>
+    <title>Upload Photos Web App</title>
   </head>
 
   <body>
     <header>
-      <h1><a href="/">Photo Uploading Web App</a></h1>
+      <h1><a href="/">Upload Photos Web App</a></h1>
     </header>
     <main>
+      <img id="logo" src="/img/photo-upload-icon.png" alt="Photo Upload icon" />
+      <p>
+        Upload Photos is a Node.js web app that shows how to upload photos using
+        Express, EJS, Multer, and MongoDB.
+      </p>
+      <p>
+        Photos are uploaded using Multer to the server's filesystem, resized
+        using Sharp, information stored in the MongoDB database, and displayed
+        on the webpage using EJS templating.
+      </p>
       <% if (photos && photos.length > 0) { %>
-      <h2>Photos</h2>
-      <% photos.forEach(function(photo) { %>
-      <img src="<%= photo.path %>" alt="<%= photo.originalname %>" />
-      <% }); %> <% } %>
+      <h2>Uploaded Photos</h2>
+      <div class="gallery">
+        <% photos.forEach(function(photo) { %>
+        <img src="<%= photo.path %>" alt="<%= photo.originalname %>" />
+        <% }); %> <% } %>
+      </div>
       <form
         id="photo-form"
         action="/upload-photo"
@@ -25,13 +59,19 @@
         enctype="multipart/form-data"
       >
         <label id="upload-photo-label" for="upload-photo">Upload a Photo</label>
-        <input id="upload-photo" type="file" accept="image/*" name="photo" />
-        <button type="submit">Submit</button>
+        <input
+          id="upload-photo"
+          type="file"
+          accept="image/*"
+          name="photo"
+          class="pl-button blue"
+        />
+        <button class="pl-button" type="submit">Submit</button>
       </form>
     </main>
 
     <footer>
-      <p>© 2024 Photo Uploading Web App</p>
+      <p>© 2024 <a href="https://louisefindlay.com">Louise Findlay</a></p>
     </footer>
     <script async src="js/main.js"></script>
   </body>
